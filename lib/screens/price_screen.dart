@@ -13,6 +13,13 @@ class PriceScreen extends StatefulWidget {
 
 class _PriceScreenState extends State<PriceScreen> {
 
+  @override
+  void setState(VoidCallback fn) {
+    if (mounted) {
+      super.setState(fn);
+    }
+  }
+
   String selectedCurrency = 'USD';
 
   Map<String, String> coinValues = {};
@@ -25,7 +32,6 @@ class _PriceScreenState extends State<PriceScreen> {
       isloading = false;
       setState(() {
         coinValues = data;
-        print(coinValues);
       });
     } catch (e) {
       print(e);
@@ -64,10 +70,13 @@ class _PriceScreenState extends State<PriceScreen> {
           tag: 'logo',
           child: Row(
             children: const [
-              Icon(Icons.currency_bitcoin),
-              Text('Bitconverter', 
-                style: TextStyle(
-                fontFamily: 'KdamThmorPro'
+              Flexible(
+                  flex: 1, child: Icon(Icons.currency_bitcoin, size: 20.0)),
+              Flexible(
+                flex: 3,
+                child: Text(
+                  'Bitconverter',
+                  style: TextStyle(fontFamily: 'KdamThmorPro', fontSize: 20.0),
                 ),
               ),
             ],
