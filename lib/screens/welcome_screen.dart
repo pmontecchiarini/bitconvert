@@ -13,64 +13,81 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  bool isDark = false;
-
+  bool isDark = true;
+  
   @override
   Widget build(BuildContext context) {
     final theme = Provider.of<ThemeChanger>(context);
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              children: [
-                Text('Dark theme:'),
-                Switch(
-                    value: isDark,
-                    activeColor: Colors.lightBlueAccent,
-                    onChanged: (value) {
-                      isDark
-                          ? theme.setTheme(ThemeData())
-                          : theme.setTheme(ThemeData.dark());
-                      setState(() {
-                        isDark = value;
-                      });
-                    }),
-              ],
-            ),
-            Hero(
-              tag: 'logo',
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Flexible(
-                      flex: 1, child: Icon(Icons.currency_bitcoin, size: 60.0)),
-                  Flexible(
-                    flex: 3,
-                    child: Text(
-                      'BITCONVERTER',
-                      style:
-                          TextStyle(fontFamily: 'KdamThmorPro', fontSize: 40.0),
-                    ),
-                  ),
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(isDark ? 'Dark theme' : 'Light theme'),
+                  Switch(
+                      value: isDark,
+                      activeColor: Colors.lightBlue,
+                      onChanged: (value) {
+                        isDark
+                            ? theme.setTheme(
+                                ThemeData(),
+                              )
+                            : theme.setTheme(ThemeData.dark());
+                        setState(() {
+                          isDark = value;
+                        });
+                      }),
                 ],
               ),
-            ),
-            SizedBox(
-              height: 40.0,
-              width: 150.0,
-            ),
-            OutlinedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, PriceScreen.id);
-              },
-              child: Text(
-                'Convert',
-                style: TextStyle(fontSize: 20.0),
+              Expanded(
+                flex: 2,
+                child: Hero(
+                  tag: 'logo',
+                  child: Material(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Flexible(
+                            flex: 1,
+                            child: Icon(
+                              Icons.currency_bitcoin,
+                              size: 60.0,
+                            )),
+                        Flexible(
+                          flex: 3,
+                          child: Text(
+                            'BITCONVERTER',
+                            style: TextStyle(
+                              fontFamily: 'KdamThmorPro',
+                              fontSize: 40.0,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ),
-            ),
-          ],
+              Flexible(
+                flex: 1,
+                child: OutlinedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, PriceScreen.id);
+                  },
+                  
+                  child: Text(
+                    'Convert',
+                    style: TextStyle(fontSize: 20.0),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

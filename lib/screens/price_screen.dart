@@ -6,9 +6,10 @@ import 'dart:io' show Platform;
 
 class PriceScreen extends StatefulWidget {
   static String id = 'price_screen';
+  const PriceScreen({Key? key}) : super(key: key);
   
   @override
-  _PriceScreenState createState() => _PriceScreenState();
+  State<PriceScreen> createState() => _PriceScreenState();
 }
 
 class _PriceScreenState extends State<PriceScreen> {
@@ -68,18 +69,24 @@ class _PriceScreenState extends State<PriceScreen> {
         backgroundColor: null,
         title: Hero(
           tag: 'logo',
-          child: Row(
-            children: const [
-              Flexible(
-                  flex: 1, child: Icon(Icons.currency_bitcoin, size: 20.0)),
-              Flexible(
-                flex: 3,
-                child: Text(
-                  'Bitconverter',
-                  style: TextStyle(fontFamily: 'KdamThmorPro', fontSize: 20.0),
+          child: Material(
+            color: Colors.transparent,
+            child: Row(
+              children: const [
+                Flexible(
+                    flex: 1, child: Icon(Icons.currency_bitcoin, size: 30.0)),
+                Flexible(
+                  flex: 3,
+                  child: Text(
+                    'Bitconverter',
+                    style: TextStyle(
+                      fontFamily: 'KdamThmorPro',
+                      fontSize: 20.0,
+                    ),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -103,10 +110,10 @@ class _PriceScreenState extends State<PriceScreen> {
   getDropdownButton() {
     return DropdownButton<String>(
         value: selectedCurrency,
-        style: const TextStyle(color: Colors.lightGreen),
+        style: const TextStyle(color: Colors.lightBlue),
         underline: Container(
           height: 2,
-          color: Colors.lightGreenAccent,
+          color: Colors.blueGrey,
         ),
         // ignore: prefer_const_literals_to_create_immutables
         items: currenciesList.map<DropdownMenuItem<String>>((String value) {

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class CurrencyCard extends StatelessWidget {
+ 
   const CurrencyCard({
+    Key? key,
     required this.value,
     required this.selectedCurrency,
     required this.cryptoCurrency,
-  });
+  }) : super(key: key);
 
   final String value;
   final String selectedCurrency;

@@ -46,7 +46,6 @@ class CoinData {
         double rate = decodedData['rate'];
         cryptoPrices[crypto] = rate.toStringAsFixed(0);
       } else {
-        print(response.statusCode);
         throw 'Problem with the get request';
       }
     }
