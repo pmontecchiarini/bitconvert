@@ -3,6 +3,8 @@ import '../coin_data.dart';
 import '../currency_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:io' show Platform;
+import '../network.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class PriceScreen extends StatefulWidget {
   static String id = 'price_screen';
@@ -95,6 +97,7 @@ class _PriceScreenState extends State<PriceScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             makeCards(),
+            isloading ? spinkit : Spacer(),
             Container(
               height: 150.0,
               alignment: Alignment.center,
@@ -150,5 +153,10 @@ class _PriceScreenState extends State<PriceScreen> {
       }).toList(),
     );
   }
+
+  Widget spinkit = SpinKitThreeBounce(
+    color: Colors.white,
+    size: 30.0,
+  );
 }
 

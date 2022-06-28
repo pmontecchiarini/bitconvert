@@ -35,8 +35,6 @@ class MaterialAppWithTheme extends StatelessWidget {
     return MaterialApp(
         title: 'Bitconverter',
         theme: theme.getTheme(),
-        //This will make the app switch to dark mode according to the system preferences.
-        //darkTheme: ThemeData.dark(),
         initialRoute: WelcomeScreen.id,
         routes: {
           WelcomeScreen.id: ((context) => WelcomeScreen()),
