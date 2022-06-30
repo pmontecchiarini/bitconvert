@@ -30,6 +30,7 @@ class MaterialAppWithTheme extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //Expose the data I'll be providing
     final theme = Provider.of<ThemeChanger>(context);
     return MaterialApp(
         title: 'Bitconverter',

@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import '../utilities/coin_data.dart';
 import '../widgets/currency_card.dart';
 import 'package:flutter/cupertino.dart';
-import 'dart:io' show Platform;
+//import 'dart:io' show Platform;
 import '../services/network.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter/foundation.dart';
 
 class PriceScreen extends StatefulWidget {
   static String id = 'price_screen';
@@ -107,11 +108,21 @@ class _PriceScreenState extends State<PriceScreen> {
               alignment: Alignment.center,
               padding: EdgeInsets.only(bottom: 30.0),
               //Choose widget according to OS
-              child:
-                  Platform.isIOS ? getCupertinoPicker() : getDropdownButton(),
+              child: getCurrencySelectWidget(),
+              // Platform.isIOS ? getCupertinoPicker() : getDropdownButton(), this code produces error on Web
             )
           ]),
     );
+  }
+
+
+//Choose widget according to platform
+  getCurrencySelectWidget() {
+    if (defaultTargetPlatform == TargetPlatform.iOS) {
+      return getCupertinoPicker();
+    } else {
+      return getDropdownButton();
+    }
   }
 
 //Android style widget

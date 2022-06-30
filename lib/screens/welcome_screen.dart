@@ -36,9 +36,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         isDark
                             ? theme.setTheme(ThemeData()
                                 //Apply theme customization to the complete theme
-                                .copyWith(
-                                    scaffoldBackgroundColor:
-                                        Color.fromARGB(255, 228, 228, 228))
+                                // .copyWith(
+                                //     scaffoldBackgroundColor:
+                                //         Color.fromARGB(255, 228, 228, 228))
                               )
                             : theme.setTheme(ThemeData.dark());
                         setState(() {
@@ -52,7 +52,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 child: Hero(
                   tag: 'logo',
                   child: Material(
-                    color: Color.fromARGB(255, 228, 228, 228),
+                    //color: Color.fromARGB(255, 228, 228, 228),
+                    color: Colors.transparent,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
