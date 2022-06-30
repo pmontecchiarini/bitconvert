@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import '../utilities/coin_data.dart';
 import '../widgets/currency_card.dart';
 import 'package:flutter/cupertino.dart';
-//import 'dart:io' show Platform;
 import '../services/network.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter/foundation.dart';
+import '../utilities/theme_data.dart';
+import 'package:provider/provider.dart';
 
 class PriceScreen extends StatefulWidget {
   static String id = 'price_screen';
@@ -66,6 +67,8 @@ class _PriceScreenState extends State<PriceScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    bool isDarktheme = Provider.of<ThemeChanger>(context).isDark;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: null,
@@ -74,13 +77,13 @@ class _PriceScreenState extends State<PriceScreen> {
           child: Material(
             color: Colors.transparent,
             child: Row(
-              children: const [
+              children: [
                 Flexible(
                     flex: 1,
                     child: Icon(
                       Icons.currency_bitcoin,
                       size: 30.0,
-                      //color: isDark ? Colors.white : Colors.black,
+                      color: isDarktheme ? Colors.white : Colors.black,
                     )),
                 Flexible(
                   flex: 3,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class ThemeChanger with ChangeNotifier {
   //the underscore makes the property private and can only be used in this class
   ThemeData _themeData;
+  bool isDark = true;
   //Constructor that recives the theme data
   ThemeChanger(this._themeData);
 
@@ -10,6 +11,7 @@ class ThemeChanger with ChangeNotifier {
 
   setTheme(ThemeData theme) {
     _themeData = theme;
+    isDark = !isDark;
     notifyListeners();
   }
 }

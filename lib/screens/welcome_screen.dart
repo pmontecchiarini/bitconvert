@@ -13,10 +13,9 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  bool isDark = true;
-  
   @override
   Widget build(BuildContext context) {
+    bool isDarktheme = Provider.of<ThemeChanger>(context).isDark;
     final theme = Provider.of<ThemeChanger>(context);
     return Scaffold(
       body: SafeArea(
@@ -28,21 +27,23 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(isDark ? 'Dark theme' : 'Light theme'),
+                  Text(isDarktheme ? 'Dark theme' : 'Light theme'),
                   Switch(
-                      value: isDark,
+                      value: isDarktheme,
                       activeColor: Colors.lightBlue,
                       onChanged: (value) {
-                        isDark
-                            ? theme.setTheme(ThemeData()
-                                //Apply theme customization to the complete theme
-                                // .copyWith(
-                                //     scaffoldBackgroundColor:
-                                //         Color.fromARGB(255, 228, 228, 228))
-                              )
-                            : theme.setTheme(ThemeData.dark());
+                        if (!isDarktheme) {
+                          theme.setTheme(ThemeData.dark());
+                        } else {
+                          theme.setTheme(ThemeData()
+                              //Apply theme customization to the complete theme
+                              // .copyWith(
+                              //     scaffoldBackgroundColor:
+                              //         Color.fromARGB(255, 228, 228, 228))
+                              );
+                        }
                         setState(() {
-                          isDark = value;
+                          isDarktheme = value;
                         });
                       }),
                 ],
@@ -59,10 +60,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       children: const [
                         Flexible(
                             flex: 1,
-                            child: Icon(
-                              Icons.currency_bitcoin,
-                              size: 60.0
-                            )),
+                            child: Icon(Icons.currency_bitcoin, size: 60.0)),
                         Flexible(
                           flex: 3,
                           child: Text(
@@ -84,7 +82,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   onPressed: () {
                     Navigator.pushNamed(context, PriceScreen.id);
                   },
-                  
                   child: Text(
                     'Convert',
                     style: TextStyle(fontSize: 20.0),
