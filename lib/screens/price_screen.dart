@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
-import '../coin_data.dart';
-import '../currency_card.dart';
+import '../utilities/coin_data.dart';
+import '../widgets/currency_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:io' show Platform;
-import '../network.dart';
+import '../services/network.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class PriceScreen extends StatefulWidget {
   static String id = 'price_screen';
   const PriceScreen({Key? key}) : super(key: key);
-  
+
   @override
   State<PriceScreen> createState() => _PriceScreenState();
 }
 
 class _PriceScreenState extends State<PriceScreen> {
-
   @override
   void setState(VoidCallback fn) {
     if (mounted) {
@@ -76,7 +75,12 @@ class _PriceScreenState extends State<PriceScreen> {
             child: Row(
               children: const [
                 Flexible(
-                    flex: 1, child: Icon(Icons.currency_bitcoin, size: 30.0)),
+                    flex: 1,
+                    child: Icon(
+                      Icons.currency_bitcoin,
+                      size: 30.0,
+                      //color: isDark ? Colors.white : Colors.black,
+                    )),
                 Flexible(
                   flex: 3,
                   child: Text(
@@ -110,6 +114,7 @@ class _PriceScreenState extends State<PriceScreen> {
     );
   }
 
+//Android style widget
   getDropdownButton() {
     return DropdownButton<String>(
         value: selectedCurrency,
@@ -122,13 +127,14 @@ class _PriceScreenState extends State<PriceScreen> {
         items: currenciesList.map<DropdownMenuItem<String>>((String value) {
           return DropdownMenuItem<String>(
             value: value,
-            child: Text(value, style: TextStyle(
-              fontSize: 20.0,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'Monserrat',
+            child: Text(
+              value,
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Monserrat',
               ),
             ),
-            
           );
         }).toList(),
         onChanged: (value) {
@@ -139,6 +145,7 @@ class _PriceScreenState extends State<PriceScreen> {
         });
   }
 
+// IOS style widget
   getCupertinoPicker() {
     return CupertinoPicker(
       itemExtent: 32.0,
@@ -156,7 +163,7 @@ class _PriceScreenState extends State<PriceScreen> {
 
   Widget spinkit = SpinKitThreeBounce(
     color: Colors.white,
+    //color: isDark ?  Colors.white : Colors.blue,
     size: 30.0,
   );
 }
-

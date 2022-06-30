@@ -1,10 +1,9 @@
-import 'package:bitconvert/blocs/theme_bloc.dart';
 import 'package:bitconvert/screens/price_screen.dart';
 import 'package:bitconvert/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
-import 'blocs/theme_bloc.dart';
+import 'utilities/theme_data.dart';
 
 Future main() async {
   await dotenv.load();

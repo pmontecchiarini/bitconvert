@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import './price_screen.dart';
-import '../blocs/theme_bloc.dart';
+import '../utilities/theme_data.dart';
 import 'package:provider/provider.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -34,8 +34,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       activeColor: Colors.lightBlue,
                       onChanged: (value) {
                         isDark
-                            ? theme.setTheme(
-                                ThemeData(),
+                            ? theme.setTheme(ThemeData()
+                                //Apply theme customization to the complete theme
+                                .copyWith(
+                                    scaffoldBackgroundColor:
+                                        Color.fromARGB(255, 228, 228, 228))
                               )
                             : theme.setTheme(ThemeData.dark());
                         setState(() {
@@ -49,6 +52,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 child: Hero(
                   tag: 'logo',
                   child: Material(
+                    color: Color.fromARGB(255, 228, 228, 228),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
@@ -56,7 +60,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             flex: 1,
                             child: Icon(
                               Icons.currency_bitcoin,
-                              size: 60.0,
+                              size: 60.0
                             )),
                         Flexible(
                           flex: 3,
