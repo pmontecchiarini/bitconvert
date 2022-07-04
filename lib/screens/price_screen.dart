@@ -176,8 +176,7 @@ class _PriceScreenState extends State<PriceScreen> {
   }
 
   Widget spinkit = SpinKitThreeBounce(
-    color: Colors.white,
-    //color: isDark ?  Colors.white : Colors.blue,
+    color: Colors.blue,
     size: 30.0,
   );
 }
