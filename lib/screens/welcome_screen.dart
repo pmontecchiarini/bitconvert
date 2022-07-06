@@ -31,6 +31,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   Switch(
                       value: isDarktheme,
                       activeColor: Colors.lightBlue,
+                      inactiveThumbColor: Colors.lightBlue,
                       onChanged: (value) {
                         if (!isDarktheme) {
                           theme.setTheme(ThemeData.dark());
@@ -39,7 +40,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                               //Apply theme customization to the complete theme
                               // .copyWith(
                               //     scaffoldBackgroundColor:
-                              //         Color.fromARGB(255, 228, 228, 228))
+                              //         Color.fromARGB(255, 244, 179, 255))
                               );
                         }
                         setState(() {
