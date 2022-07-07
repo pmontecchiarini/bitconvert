@@ -70,6 +70,7 @@ class _PriceScreenState extends State<PriceScreen> {
 
     bool isDarktheme = Provider.of<ThemeChanger>(context).isDark;
     return Scaffold(
+      //backgroundColor: Colors.green,
       appBar: AppBar(
         backgroundColor: null,
         title: Hero(
