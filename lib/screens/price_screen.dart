@@ -42,6 +42,7 @@ class _PriceScreenState extends State<PriceScreen> {
     }
   }
 
+
   Column makeCards() {
     List<CurrencyCard> cryptoCards = [];
     for (String crypto in cryptoList) {
@@ -93,6 +94,7 @@ class _PriceScreenState extends State<PriceScreen> {
                     style: TextStyle(
                       fontFamily: 'KdamThmorPro',
                       fontSize: 20.0,
+                      color: isDarktheme ? Colors.white : Colors.black,
                     ),
                   ),
                 ),
@@ -101,21 +103,24 @@ class _PriceScreenState extends State<PriceScreen> {
           ),
         ),
       ),
-      body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            makeCards(),
-            isloading ? spinkit : Spacer(),
-            Container(
-              height: 150.0,
-              alignment: Alignment.center,
-              padding: EdgeInsets.only(bottom: 30.0),
-              //Choose widget according to OS
-              child: getCurrencySelectWidget(),
-              // Platform.isIOS ? getCupertinoPicker() : getDropdownButton(), this code produces error on Web
-            )
-          ]),
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(0, 10.0, 0, 0),
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              makeCards(),
+              isloading ? spinkit : Spacer(),
+              Container(
+                height: 150.0,
+                alignment: Alignment.center,
+                padding: EdgeInsets.only(bottom: 30.0),
+                //Choose widget according to OS
+                child: getCurrencySelectWidget(),
+                // Platform.isIOS ? getCupertinoPicker() : getDropdownButton(), this code produces error on Web
+              )
+            ]),
+      ),
     );
   }
 
@@ -138,7 +143,6 @@ class _PriceScreenState extends State<PriceScreen> {
           height: 2,
           color: Colors.blueGrey,
         ),
-        // ignore: prefer_const_literals_to_create_immutables
         items: currenciesList.map<DropdownMenuItem<String>>((String value) {
           return DropdownMenuItem<String>(
             value: value,

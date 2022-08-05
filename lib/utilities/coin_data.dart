@@ -26,4 +26,5 @@ final List<String> cryptoList = [
   'BTC',
   'ETH',
   'LTC',
+  'DAI',
 ];
